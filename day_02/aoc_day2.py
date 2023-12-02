@@ -9,11 +9,11 @@ games = []
 
 for l in lines:
     game_dict = {}
-    for game in l[1:]:
+    for game in l[1:]:  # ignore the first element because first game is showing "Game X"
         for g in game.split(", "):
-            if g[g.find(" ")+1] not in game_dict.keys():
-                game_dict[g[g.find(" ")+1]] = int(g[:g.find(" ")])
-            elif int(g[:g.find(" ")]) > game_dict[g[g.find(" ")+1]]:
+            if g[g.find(" ")+1] not in game_dict.keys():  # check if the cube color is in the game_dict already
+                game_dict[g[g.find(" ")+1]] = int(g[:g.find(" ")])  # if cube color not in dict, add the cube value in dict
+            elif int(g[:g.find(" ")]) > game_dict[g[g.find(" ")+1]]:  # only update if cube value is larger than before
                 game_dict[g[g.find(" ")+1]] = int(g[:g.find(" ")])
     games.append(game_dict)
 
